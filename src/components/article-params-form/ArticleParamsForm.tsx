@@ -1,5 +1,4 @@
+import * as styles from "./ArticleParamsForm.module.scss";
 export const ArticleParamsForm = () => {
-    return(
-        <p>form</p>
-    );
-}
+  return <form className={styles.form}>form</form>;
+};

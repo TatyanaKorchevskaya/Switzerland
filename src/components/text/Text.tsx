@@ -1,12 +1,13 @@
 import { clsx } from "clsx";
-import { ReactNode } from "react";
+import { ElementType, ReactNode } from "react";
 
-import styles from "./index.module.css";
+import * as styles from "./Text.module.scss";
 
 type TextProps = {
   /** Сам текст для вывода */
   children: string;
-
+  as?: ElementType;
+  elementClasses?: string;
   /** Булевая пропса, должен ли текст меняться в зависимости от конфига */
   dynamic?: boolean;
   /** Размер шрифта */
@@ -26,6 +27,8 @@ type TextProps = {
 
 export const Text = ({
   children,
+  as: Tag = "div",
+  elementClasses = "",
   size = 18,
   dynamic = false,
   weight = 400,
@@ -42,8 +45,9 @@ export const Text = ({
     styles[`${fontStyle}`],
     { [styles.uppercase]: uppercase },
     styles[`${align}`],
-    { [styles.dynamicLite]: dynamicLite }
+    { [styles.dynamicLite]: dynamicLite },
+    elementClasses
   );
 
-  return <p className={className}>{children}</p>;
+  return <Tag className={className}>{children}</Tag>;
 };

@@ -1,1 +1,1 @@
-export { ArticleParamsForm } from "./articleParamsForm";
+export { ArticleParamsForm } from "./ArticleParamsForm";
