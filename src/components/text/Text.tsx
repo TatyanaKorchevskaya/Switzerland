@@ -2,10 +2,11 @@ import { clsx } from "clsx";
 import { ElementType, ReactNode } from "react";
 
 import * as styles from "./Text.module.scss";
+import { FontFamiliesClasses } from "../../constants/acrticleVar";
 
 type TextProps = {
   /** Сам текст для вывода */
-  children: string;
+  children: ReactNode;
   as?: ElementType;
   elementClasses?: string;
   /** Булевая пропса, должен ли текст меняться в зависимости от конфига */
@@ -20,6 +21,7 @@ type TextProps = {
   uppercase?: boolean;
   /** Выравнивание текста */
   align?: "center" | "left";
+  family?: FontFamiliesClasses;
 
   /** Булевая пропса, делает динамическим только семью шрифтов и цвет */
   dynamicLite?: boolean;
@@ -35,7 +37,9 @@ export const Text = ({
   fontStyle = "normal",
   uppercase = false,
   align = "left",
+  family = 'open-sans',
   dynamicLite = false,
+
 }: TextProps) => {
   const className = clsx(
     styles.text,
