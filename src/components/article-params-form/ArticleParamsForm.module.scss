@@ -1,4 +1,9 @@
+.fields {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
 .form {
-    // display:none;
     opacity: 1;
 }

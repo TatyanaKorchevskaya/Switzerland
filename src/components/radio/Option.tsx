@@ -9,15 +9,13 @@ type OptionProps = {
   title: string;
   selected: boolean;
   option: OptionType;
-  onChange?: Function;
+  onChange?: (option: OptionType) => void;
 };
 
 export const Option = (props: OptionProps) => {
   const { value, title, selected, option, onChange } = props;
   const optionRef = useRef<HTMLDivElement>(null);
-  const handleChange= () => {
-    onChange(option)
-  }
+  const handleChange = () => onChange?.(option);
   return (
     <div className={styles.item} key={value} tabIndex={0} ref={optionRef}>
       <input

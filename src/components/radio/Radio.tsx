@@ -33,7 +33,7 @@ export const Radio = (props: RadioProps) => {
             title={option.title}
             selected={false}
             onChange={() => handleChange()}
-            // option={option}
+            option={option}
           />
         ))}
       </div>
