@@ -14,9 +14,22 @@ import {
 import { useState, FormEvent } from "react";
 import { Radio } from "../radio/Radio";
 import { Splitter } from "../splitter/Splitter";
-import { Button } from "../../stories/Button";
+import { Button } from "../button/Button";
+import { IAllOptions } from "../../App";
+import clsx from "clsx";
+import { ArrowBtn } from "../arrow-btn/ArrowBtn";
 
-export const ArticleParamsForm = () => {
+interface PropsArticleParamsForm {
+  toggleOpenFn: () => void;
+  openState: boolean;
+  setPageState: React.Dispatch<React.SetStateAction<IAllOptions>>;
+}
+
+export const ArticleParamsForm = ({
+  toggleOpenFn,
+  openState,
+  setPageState,
+}: PropsArticleParamsForm) => {
   const [formState, setFormState] =
     useState<ArticleStateType>(defaultArticleState);
 
@@ -30,7 +43,13 @@ export const ArticleParamsForm = () => {
   };
   return (
     <>
-      <aside>
+    <ArrowBtn isActive={openState} onClick={toggleOpenFn}/>
+      <aside
+        className={clsx({
+          [styles.container]: true,
+          [styles.container_open]: openState,
+        })}
+      >
         <form className={styles.form}>
           <Text as="h2" size={31} weight={800}>
             Задайте параметры
@@ -51,24 +70,23 @@ export const ArticleParamsForm = () => {
             />
             <Splitter />
             <Select
-						title='Цвет фона'
-						selected={formState.backgroundColor}
-						options={backgroundColors}
-						onChange={handleChange('backgroundColor')}
-					/>
-					<Select
-						title='Ширина контента'
-						selected={formState.contentWidth}
-						options={contentWidthArr}
-						onChange={handleChange('contentWidth')}
-					/>
+              title="Цвет фона"
+              selected={formState.backgroundColor}
+              options={backgroundColors}
+              onChange={handleChange("backgroundColor")}
+            />
+            <Select
+              title="Ширина контента"
+              selected={formState.contentWidth}
+              options={contentWidthArr}
+              onChange={handleChange("contentWidth")}
+            />
           </div>
 
           <div>
-						<Button text='Сбросить' type='reset' />
-						<Button text='Применить' type='submit' />
-					</div>
-          
+            <Button type="reset">Сбросить</Button>
+            <Button type="submit" >Применить</Button>
+          </div>
         </form>
       </aside>
     </>

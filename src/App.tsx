@@ -1,37 +1,37 @@
 import { useState } from "react";
 import { ArticleParamsForm } from "./components/article-params-form";
+import { OptionType, defaultArticleState } from "./constants/acrticleVar";
 import { Article } from "./components/article";
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import "./App.css";
 
+
+export interface IAllOptions {
+	fontFamilyOption: OptionType;
+	fontSizeOption: OptionType;
+	fontColor: OptionType;
+	backgroundColor: OptionType;
+	contentWidth: OptionType;
+}
+
 function App() {
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+
+  const [pageState, setPageState] = useState<IAllOptions>(defaultArticleState);
+  function toggleOpen() {
+		setIsOpen((oldVal) => !oldVal);
+	}
   return (
     <>
       <div>
-        <ArticleParamsForm/>
-        <Article/>
+        <ArticleParamsForm
+				toggleOpenFn={toggleOpen}
+				openState={isOpen}
+				setPageState={setPageState}
+			 />
+        <Article />
       </div>
-      {/* <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
     </>
   );
 }
