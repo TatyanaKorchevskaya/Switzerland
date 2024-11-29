@@ -30,6 +30,8 @@ export const ArticleParamsForm = ({
   openState,
   setPageState,
 }: PropsArticleParamsForm) => {
+  const [isOpened, setIsOpened] = useState<boolean>(false);
+
   const [formState, setFormState] =
     useState<ArticleStateType>(defaultArticleState);
 
@@ -41,16 +43,30 @@ export const ArticleParamsForm = ({
       }));
     };
   };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setPageState(formState);
+  };
+
+  const handleReset = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setFormState(defaultArticleState);
+
+    setPageState(defaultArticleState);
+  };
   return (
     <>
-    <ArrowBtn isActive={openState} onClick={toggleOpenFn}/>
+      <ArrowBtn isActive={openState} onClick={toggleOpenFn} />
       <aside
         className={clsx({
           [styles.container]: true,
           [styles.container_open]: openState,
         })}
       >
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <Text as="h2" size={31} weight={800}>
             Задайте параметры
           </Text>
@@ -61,7 +77,8 @@ export const ArticleParamsForm = ({
               options={fontFamilyOptions}
               onChange={handleChange("fontFamilyOption")}
             />
-            <Radio title="Размер шрифта" options={fontSizeOptions} />
+            <Radio title="Размер шрифта" options={fontSizeOptions} onChange={handleChange('fontSizeOption')} name='fontSizeOption'
+						selected={formState.fontSizeOption} />
             <Select
               title="Цвет шрифта"
               selected={formState.fontColor}
@@ -85,10 +102,11 @@ export const ArticleParamsForm = ({
 
           <div>
             <Button type="reset">Сбросить</Button>
-            <Button type="submit" >Применить</Button>
+            <Button type="submit">Применить</Button>
           </div>
         </form>
       </aside>
     </>
   );
 };
+

@@ -1,5 +1,8 @@
 
-
+.main {
+	--bg-color: #ffffff;
+	background-color: var(--bg-color, #ffffff);
+}
 
 /* #root {
   max-width: 1280px;
