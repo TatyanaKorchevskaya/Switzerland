@@ -16,7 +16,7 @@ type RadioProps = {
 export const Radio = (props: RadioProps) => {
   const { title, options, onChange, selected, name } = props;
   const handleChange = (option: OptionType) => onChange?.(option);
-  // const selectedDefault: OptionType = options[0];
+
   return (
     <div className={styles.container}>
       {title && (

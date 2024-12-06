@@ -1,6 +1,7 @@
 .article {
     display: block;
-}
+    
+    }
 
 .title {
     margin-bottom: 24px;
@@ -18,7 +19,10 @@
 }
 
 .container {
+    display: block;
+    margin: 0 auto;
     padding: 0 103px;
+    width: var(--container-width)
 }
 
 .img_description {

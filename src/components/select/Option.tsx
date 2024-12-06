@@ -6,7 +6,6 @@ import { Text } from './../text/index';
 import { isFontFamilyClass } from './helpers/isFontFamilyClass';
 import { useEnterOptionSubmit } from './hooks/useEnterOptionSubmit';
 
-// import styles from './Select.module.scss';
 import * as styles from "./Select.module.scss";
 
 type OptionProps = {

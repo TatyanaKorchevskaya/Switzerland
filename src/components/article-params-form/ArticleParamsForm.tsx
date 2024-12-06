@@ -46,15 +46,12 @@ export const ArticleParamsForm = ({
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     setPageState(formState);
   };
 
   const handleReset = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     setFormState(defaultArticleState);
-
     setPageState(defaultArticleState);
   };
   return (
@@ -66,7 +63,7 @@ export const ArticleParamsForm = ({
           [styles.container_open]: openState,
         })}
       >
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit} onReset={handleReset}>
           <Text as="h2" size={31} weight={800}>
             Задайте параметры
           </Text>
@@ -77,8 +74,13 @@ export const ArticleParamsForm = ({
               options={fontFamilyOptions}
               onChange={handleChange("fontFamilyOption")}
             />
-            <Radio title="Размер шрифта" options={fontSizeOptions} onChange={handleChange('fontSizeOption')} name='fontSizeOption'
-						selected={formState.fontSizeOption} />
+            <Radio
+              title="Размер шрифта"
+              options={fontSizeOptions}
+              onChange={handleChange("fontSizeOption")}
+              name="fontSizeOption"
+              selected={formState.fontSizeOption}
+            />
             <Select
               title="Цвет шрифта"
               selected={formState.fontColor}
@@ -100,13 +102,16 @@ export const ArticleParamsForm = ({
             />
           </div>
 
-          <div>
-            <Button type="reset">Сбросить</Button>
-            <Button type="submit">Применить</Button>
+          <div className={styles.btnswrap}>
+            <Button elementClasses={styles.btnreset} type="reset">
+              Сбросить
+            </Button>
+            <Button elementClasses={styles.btnsubmit} type="submit">
+              Применить
+            </Button>
           </div>
         </form>
       </aside>
     </>
   );
 };
-

@@ -1,7 +1,7 @@
 .fields {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
 }
 
 .container {
@@ -30,4 +30,41 @@
 	padding: 50px 31px;
 	background-color: #ffffff;
 	border-right: 1px solid #000000;
+}
+
+.btnswrap {
+	display: flex;
+	justify-content: space-between;
+}
+
+.btnreset,
+.btnsubmit {
+	font-size: 18;
+	font-weight: 800;
+	border: 1px solid #000;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+.btnreset {
+
+	background: transparent;
+}
+
+.btnsubmit {
+
+	background: #ffc802;
+	
+}
+
+.btnreset:hover {
+	background: #000;
+	color: #ffffff;
+}
+
+
+.btnsubmit:hover {
+
+	background: #ffedab;
+
 }

@@ -6,7 +6,7 @@
 	display: flex;
 	flex-direction: column;
 	row-gap: 4px;
-	
+
 }
 
 .arrow {
@@ -15,6 +15,7 @@
 	right: 6px;
 	margin-top: -12px;
 	transition: transform 0.2s ease-in-out, margin-top 0.2s ease-in-out;
+	cursor: pointer;
 }
 
 .placeholder {
@@ -30,6 +31,12 @@
 	cursor: pointer;
 }
 
+
+.placeholder:hover {
+	outline: 1px solid #ffc802;
+}
+
+
 .placeholder[data-selected='true'] {
 	color: rgb(0 0 0);
 }
@@ -43,10 +50,6 @@
 	outline: 3px solid #000000;
 }
 
-.selectWrapper:not([data-is-active='true'])
-	.placeholder:not([data-status='invalid']):hover {
-	outline: 3px solid #000000;
-}
 
 .select {
 	position: absolute;
@@ -79,7 +82,11 @@
 }
 
 .option:hover {
-	background: var(--grey, #c4c4c4);
+	background: #eee;
+}
+
+.option:active {
+	background: #d7d7d7;
 }
 
 @mixin option-color-before {
@@ -205,9 +212,4 @@
 .option-narrow::before {
 	@include option-width-before;
 	background-image: url('./../../img/narrow.svg');
-}
-
-//TODO: узнать, откуда взялся
-.arrow_open {
-	opacity: 1;
 }
